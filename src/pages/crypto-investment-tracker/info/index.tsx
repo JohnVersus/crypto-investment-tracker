@@ -17,7 +17,7 @@ const Info = () => {
             About
           </Text>
           <Text maxWidth={"600px"} textAlign={"center"}>
-            Cryto investment tracker is a simple tool to replace your classic
+            Crypto investment tracker is a simple tool to replace your classic
             excel sheet. It helps to track all your crypto investments in one
             place.
           </Text>

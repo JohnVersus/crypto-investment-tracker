@@ -32,7 +32,6 @@ const saveDataLogic = (
     const exTotalPrice = existingData[coinIndex]?.totalPrice
       ? existingData[coinIndex]?.totalPrice ?? 0
       : 0;
-    console.log({ exTotalPrice });
     if (coinIndex >= 0) {
       const isBuying = data.quantity >= 0;
 

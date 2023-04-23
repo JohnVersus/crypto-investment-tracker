@@ -12,7 +12,6 @@ export default async function handler(
   }
 
   const session = await getSession({ req });
-  console.log({ session });
 
   if (!session) {
     res.status(401).json({ message: "Not authenticated" });

@@ -8,3 +8,4 @@ export { default as Text } from "./Text";
 export { default as Tooltip } from "./Tooltip";
 export { default as FloatingHideButton } from "./FloatingHideButton";
 export { Select, Option } from "./Select";
+export { SeoTags } from "./SeoTags";

@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, FlexBox, Box } from "~/components/atoms";
-import Layout from "~/components/Layout/Layout";
+import { CryptoInvestmentTrackerLayout } from "~/components/Layout";
 const PrivacyPolicy = () => {
   return (
-    <Layout>
+    <CryptoInvestmentTrackerLayout>
       <FlexBox
         flexDirection="column"
         alignItems="center"
@@ -84,7 +84,7 @@ const PrivacyPolicy = () => {
           </Text>
         </Box>
       </FlexBox>
-    </Layout>
+    </CryptoInvestmentTrackerLayout>
   );
 };
 

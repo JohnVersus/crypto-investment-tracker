@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, FlexBox, Box } from "~/components/atoms";
-import Layout from "~/components/Layout/Layout";
+import { CryptoInvestmentTrackerLayout } from "~/components/Layout";
 const TermsOfService = () => {
   return (
-    <Layout>
+    <CryptoInvestmentTrackerLayout>
       <FlexBox
         flexDirection="column"
         alignItems="center"
@@ -59,7 +59,7 @@ const TermsOfService = () => {
           </Text>
         </Box>
       </FlexBox>
-    </Layout>
+    </CryptoInvestmentTrackerLayout>
   );
 };
 

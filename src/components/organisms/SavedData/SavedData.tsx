@@ -115,9 +115,7 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
               <TableHeader label="Coin Price ($)" />
               <TableHeader label="Profit ($)" />
               <TableHeader label="Profit (%)" />
-              {/* <TableHeader label="Date" /> */}
-              <TableHeader label="Realized Profit ($)" />{" "}
-              {/* <TableHeader label="Notes" /> */}
+              <TableHeader label="Realized Profit ($)" />
             </TableRow>
           </THead>
           <TBody>

@@ -29,12 +29,9 @@ export default async function handler(
   }
 
   try {
-    console.log("here");
-    console.log({ data });
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     // data.forEach(async (item) => {
     const { coinName, quantity, totalPrice, profit } = data;
-    console.log({ coinName, quantity, totalPrice, profit });
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const savedData = await prisma.formData.create({
       data: {
