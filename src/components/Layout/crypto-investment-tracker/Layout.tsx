@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
     >
       {children}
       <Navbar>
-        <NavbarItem href="/crypto-investment-tracker">
+        <NavbarItem href="/">
           <Tooltip content={"Home"}>
             <Home size={"80%"} color={theme.colors.white} />
           </Tooltip>
@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
         <NavbarItem>
           <LoginButton />
         </NavbarItem>
-        <NavbarItem href="/crypto-investment-tracker/info">
+        <NavbarItem href="/info">
           <Tooltip content={"Info"}>
             <Info size={"80%"} color={theme.colors.white} />
           </Tooltip>

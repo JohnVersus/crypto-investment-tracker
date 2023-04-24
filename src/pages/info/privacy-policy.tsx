@@ -48,8 +48,7 @@ const PrivacyPolicy = () => {
             <br />
             - Personalizing your experience with our Services
             <br />
-            - Communicating with you about updates, promotions, and important
-            information
+            - Communicating with you about updates, and important information
             <br />
             - Enhancing the security of our Services
             <br />

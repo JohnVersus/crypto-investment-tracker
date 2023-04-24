@@ -35,13 +35,9 @@ const Info = () => {
           <Text>Version 1.0: Initial release</Text>
         </Box>
         <Box mb={2}>
-          <Link href={"/crypto-investment-tracker/info/privacy-policy"}>
-            Privacy Policy
-          </Link>
+          <Link href={"/info/privacy-policy"}>Privacy Policy</Link>
           {" | "}
-          <Link href={"/crypto-investment-tracker/info/terms-of-service"}>
-            Terms of Service
-          </Link>
+          <Link href={"/info/terms-of-service"}>Terms of Service</Link>
         </Box>
       </FlexBox>
     </CryptoInvestmentTrackerLayout>
