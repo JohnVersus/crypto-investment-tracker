@@ -26,7 +26,15 @@ const Info = () => {
           <Text as="h1" textAlign={"center"}>
             Contact
           </Text>
-          <Text>Email: dontContact@anyone.com</Text>
+          <Text textAlign={"center"}>
+            <Link
+              href={
+                "https://github.com/JohnVersus/crypto-investment-tracker/issues"
+              }
+            >
+              Github issues
+            </Link>
+          </Text>
         </Box>
         <Box mb={2}>
           <Text as="h1" textAlign={"center"}>

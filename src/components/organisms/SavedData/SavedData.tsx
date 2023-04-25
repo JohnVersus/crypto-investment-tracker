@@ -109,20 +109,20 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
       <TableWrapper
         maxWidth={["120%", "100%", "100%", "80%", "80%", "80%"]}
         maxHeight={["90vh", "90vh", "60vh", "60vh", "60vh", "60vh"]}
-        pt="1vh"
+        // pt="1vh"
         // pb={["120px", "120px", "120px", "120px", "120px", "120px"]}
       >
         <Table fontSize={[2, 2, 2, 2, 2, 6]}>
           <THead>
             <TableRow>
-              <TableHeader label="Coin Name" />
-              <TableHeader label="Quantity" />
-              <TableHeader label="Total Price ($)" />
-              <TableHeader label="Average Price ($)" />
-              <TableHeader label="Coin Price ($)" />
-              <TableHeader label="Profit ($)" />
-              <TableHeader label="Profit (%)" />
-              <TableHeader label="Realized Profit ($)" />
+              <TableHeader stickyX stickyY label="Coin Name" />
+              <TableHeader stickyY label="Quantity" />
+              <TableHeader stickyY label="Total Price ($)" />
+              <TableHeader stickyY label="Average Price ($)" />
+              <TableHeader stickyY label="Coin Price ($)" />
+              <TableHeader stickyY label="Profit ($)" />
+              <TableHeader stickyY label="Profit (%)" />
+              <TableHeader stickyY label="Realized Profit ($)" />
             </TableRow>
           </THead>
           <TBody>
@@ -135,7 +135,7 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
               const profitPercent = (profitUSD / item.totalPrice) * 100;
               return (
                 <TableRow key={index}>
-                  <TableCell>{item.coinName}</TableCell>
+                  <TableCell stickyX>{item.coinName}</TableCell>
                   <TableCell>
                     {hideSensitiveInfo ? "****" : item.quantity}
                   </TableCell>

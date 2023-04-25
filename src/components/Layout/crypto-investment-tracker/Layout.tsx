@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
       {...rest}
     >
       {children}
-      <Navbar>
+      <Navbar zIndex={75}>
         <NavbarItem href="/">
           <Tooltip content={"Home"}>
             <Home size={"80%"} color={theme.colors.white} />

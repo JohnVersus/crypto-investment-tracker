@@ -75,6 +75,9 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
         description="Crypto investment tracker is a simple tool to replace your classic excel sheet. It helps to track all your crypto investments in one place."
         favicon="/coin.png"
         thumbnailUrl="https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https%3A%2F%2Fgithub.com%2FJohnVersus%2Fcrypto-investment-tracker"
+        url="https://crypto-investment-tracker.vercel.app/"
+        siteName="Crypto Investment Tracker"
+        twitterUsername="_johnversus"
       />
       {/* <link
         rel="stylesheet"
