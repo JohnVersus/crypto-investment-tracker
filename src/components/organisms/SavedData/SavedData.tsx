@@ -8,7 +8,7 @@ import {
   TableRow,
   TableWrapper,
 } from "~/components/atoms/Table";
-import { Text } from "~/components/atoms";
+import { FlexBox, Text } from "~/components/atoms";
 import type { FormData } from "~/components/molecules/CryptoForm";
 import type { CoinData } from "~/pages/api/getCoin";
 // import localForage from "localforage";
@@ -59,12 +59,19 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
 
   if (!savedData || !savedData.length) {
     return (
-      <Text textSize="medium" textAlign={"center"}>
-        No data found. <br />{" "}
-        {session?.user?.id
-          ? "Use the above form to save cryto investment data."
-          : "Use the form to save data or Login to view the saved data."}
-      </Text>
+      <FlexBox
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        height={"80%"}
+      >
+        <Text textSize="medium" textAlign={"center"}>
+          No data found. <br />
+          {session?.user?.id
+            ? "Use the above form to save cryto investment data."
+            : "Use the form to save data or Login to view the saved data."}
+        </Text>
+      </FlexBox>
     );
   }
 

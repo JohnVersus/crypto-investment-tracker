@@ -18,6 +18,7 @@ export const useCryptoData = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setStatus("Loading...");
       try {
         const loadedData = session
           ? await loadDataCloud("cryptoData")
@@ -26,10 +27,12 @@ export const useCryptoData = () => {
       } catch (e) {
         if (e instanceof Error) {
           setError(e);
+          setStatus("");
           console.log(e);
         }
       } finally {
         setDataFetched(true); // Set the flag after data is fetched
+        setStatus("");
       }
     };
 
@@ -45,7 +48,7 @@ export const useCryptoData = () => {
 
   const saveCryptoData = async (newData: FormData) => {
     try {
-      setStatus("Saving..");
+      setStatus("Saving...");
       const updatedData = session
         ? await saveDataCloud("cryptoData", newData, session.user.id)
         : await saveData("cryptoData", newData);

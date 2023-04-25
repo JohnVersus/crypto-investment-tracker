@@ -8,12 +8,12 @@ import ToggleButton from "~/components/atoms/ToggleButton";
 import { useEffect, useState } from "react";
 import type { CoinData } from "~/pages/api/getCoin";
 import typedFetch from "~/utils/typedFetch";
-import { getSession } from "next-auth/react";
+import { getServerAuthSession } from "~/server/auth";
 import type { Session } from "next-auth";
 import { SeoTags } from "~/components/atoms";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = await getSession(ctx);
+  const session = await getServerAuthSession(ctx);
   const apiUrl = process.env.NEXTAUTH_URL;
   if (!apiUrl) throw new Error("Add app url in env");
   try {
@@ -115,7 +115,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
             formTrigger={saveCryptoData}
             isHidden={formHidden}
             coins={coins}
-            disabled={status ? true : false}
+            disabled={status === "Saving..." ? true : false}
           />
         </Box>
         <SavedData savedData={data} coins={coins} session={userSession} />
