@@ -21,6 +21,7 @@ import type { Session } from "next-auth";
 type SavedDataProps = {
   savedData: FormData[] | null;
   coins: CoinData[];
+  status: string;
 };
 
 type userSession = {
@@ -31,6 +32,7 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
   savedData,
   coins,
   session,
+  status,
 }) => {
   const [hideSensitiveInfo, setHideSensitiveInfo] = useState(false);
 
@@ -66,10 +68,12 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
         height={"80%"}
       >
         <Text textSize="medium" textAlign={"center"}>
-          No data found. <br />
-          {session?.user?.id
-            ? "Use the above form to save cryto investment data."
-            : "Use the form to save data or Login to view the saved data."}
+          {status ? "Loading data.." : "No data found."} <br />
+          {!status
+            ? session?.user?.id
+              ? "Use the above form to save cryto investment data."
+              : "Use the form to save data or Login to view the saved data."
+            : ""}
         </Text>
       </FlexBox>
     );

@@ -121,7 +121,12 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
             disabled={status === "Saving..." ? true : false}
           />
         </Box>
-        <SavedData savedData={data} coins={coins} session={userSession} />
+        <SavedData
+          savedData={data}
+          coins={coins}
+          session={userSession}
+          status={status}
+        />
       </Box>
     </CryptoInvestmentTrackerLayout>
   );
