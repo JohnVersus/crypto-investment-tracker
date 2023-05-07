@@ -4,12 +4,14 @@ import Navbar from "~/components/organisms/Navbar/Navbar";
 import NavbarItem from "~/components/organisms/Navbar/NavbarItem";
 import { Home, Info } from "react-feather";
 import { theme } from "~/components/Theme";
+import type { Session } from "next-auth";
 
 interface LayoutProps {
+  session: Session;
   children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
+const Layout: React.FC<LayoutProps> = ({ session, children, ...rest }) => {
   return (
     <Box
       height="100vh"
@@ -26,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
           </Tooltip>
         </NavbarItem>
         <NavbarItem>
-          <LoginButton />
+          <LoginButton session={session} />
         </NavbarItem>
         <NavbarItem href="/info">
           <Tooltip content={"Info"}>

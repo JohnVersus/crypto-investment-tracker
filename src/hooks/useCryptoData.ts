@@ -8,19 +8,20 @@ import {
 } from "~/utils/storage";
 import type { FormData } from "~/components/molecules/CryptoForm";
 import { useSession } from "next-auth/react";
+import type { Session } from "next-auth";
 
-export const useCryptoData = () => {
+export const useCryptoData = ({ session }: { session: Session }) => {
   const [data, setData] = useState<FormData[] | null>(null);
   const [dataFetched, setDataFetched] = useState<boolean>(false);
   const [status, setStatus] = useState("");
   const [error, setError] = useState<Error>();
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   useEffect(() => {
     const fetchData = async () => {
       setStatus("Loading...");
       try {
-        const loadedData = session
+        const loadedData = session.user.id
           ? await loadDataCloud("cryptoData")
           : await loadData("cryptoData");
         setData(loadedData);
@@ -66,12 +67,11 @@ export const useCryptoData = () => {
   const migrateLocalData = async () => {
     try {
       const localData = await loadData("cryptoData");
+      if (!localData) {
+        return;
+      }
       const cloudData = await loadDataCloud("cryptoData");
       if (!cloudData?.length) {
-        if (!localData) {
-          return;
-        }
-
         if (localData && session) {
           for (const item of localData) {
             await saveDataCloud("cryptoData", item, session.user.id);

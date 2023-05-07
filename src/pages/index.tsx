@@ -42,10 +42,10 @@ type IndexPageProps = {
 
 const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
   const { data, saveCryptoData, migrateLocalData, dataFetched, status, error } =
-    useCryptoData();
+    useCryptoData({ session: userSession });
 
   useEffect(() => {
-    if (userSession) {
+    if (userSession.user.id) {
       migrateLocalData()
         .then()
         .catch((e) => {
@@ -69,7 +69,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
   };
 
   return (
-    <CryptoInvestmentTrackerLayout>
+    <CryptoInvestmentTrackerLayout session={userSession}>
       <SeoTags
         title="Crypto Investment Tracker | JohnVersus"
         description="Crypto investment tracker is a simple tool to replace your classic excel sheet. It helps to track all your crypto investments in one place."
