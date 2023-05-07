@@ -2,9 +2,10 @@ import React from "react";
 import { Text, FlexBox, Box } from "~/components/atoms";
 import Link from "next/link";
 import { CryptoInvestmentTrackerLayout } from "~/components/Layout";
+import type { Session } from "next-auth";
 const Info = () => {
   return (
-    <CryptoInvestmentTrackerLayout>
+    <CryptoInvestmentTrackerLayout session={{} as Session}>
       <FlexBox
         flexDirection="column"
         alignItems="center"

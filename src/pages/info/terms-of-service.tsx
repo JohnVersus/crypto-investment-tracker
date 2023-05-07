@@ -1,9 +1,10 @@
+import type { Session } from "next-auth";
 import React from "react";
 import { Text, FlexBox, Box } from "~/components/atoms";
 import { CryptoInvestmentTrackerLayout } from "~/components/Layout";
 const TermsOfService = () => {
   return (
-    <CryptoInvestmentTrackerLayout>
+    <CryptoInvestmentTrackerLayout session={{} as Session}>
       <FlexBox
         flexDirection="column"
         alignItems="center"
