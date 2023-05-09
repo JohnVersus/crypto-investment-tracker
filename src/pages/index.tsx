@@ -17,10 +17,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const apiUrl = process.env.NEXTAUTH_URL;
   if (!apiUrl) throw new Error("Add app url in env");
   try {
-    // const coins = await typedFetch<CoinData[]>(`${apiUrl}/api/getCoin`);
+    const coins = await typedFetch<CoinData[]>(`${apiUrl}/api/getCoin`);
     return {
       props: {
-        // coins,
+        coins,
         userSession: session,
       },
     };
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     console.log({ error });
     return {
       props: {
-        // coins: {},
+        coins: {},
         userSession: session,
       },
     };
@@ -36,26 +36,26 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 type IndexPageProps = {
-  // coins: CoinData[];
+  coins: CoinData[];
   userSession: Session;
 };
 
-const IndexPage: NextPage<IndexPageProps> = ({ userSession }) => {
+const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
   const { data, saveCryptoData, migrateLocalData, dataFetched, status, error } =
     useCryptoData({ session: userSession });
 
-  const [coins, setCoins] = useState<CoinData[]>();
-  const init = async () => {
-    const data = await typedFetch<CoinData[]>(`/api/getCoin`);
-    setCoins(data);
-  };
-  useEffect(() => {
-    init()
-      .then()
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+  // const [coins, setCoins] = useState<CoinData[]>();
+  // const init = async () => {
+  //   const data = await typedFetch<CoinData[]>(`/api/getCoin`);
+  //   setCoins(data);
+  // };
+  // useEffect(() => {
+  //   init()
+  //     .then()
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
   useEffect(() => {
     if (userSession?.user?.id) {
       migrateLocalData()

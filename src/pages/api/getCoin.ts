@@ -30,6 +30,22 @@ export type CoinData = {
   last_updated: string;
 };
 
+export type ReducedCoinData = {
+  id: string;
+  name: string;
+  image: string;
+  current_price: number;
+};
+
+const reduceCoinData = (coinData: CoinData): ReducedCoinData => {
+  return {
+    id: coinData.id,
+    name: coinData.name,
+    image: coinData.image,
+    current_price: coinData.current_price,
+  };
+};
+
 const fetchCoinsData = async (
   page_length: number,
   page_number: number
@@ -58,10 +74,12 @@ const getCoins = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (data1 && data2) {
       const combinedData = [...data1, ...data2];
-      res.status(200).json(combinedData);
+      const reducedData = combinedData.map(reduceCoinData);
+      res.status(200).json(reducedData);
     }
   } catch (error) {
     res.status(500).json({ message: "An error occurred while fetching data." });
   }
 };
+
 export default getCoins;
