@@ -7,7 +7,6 @@ import {
   purgeLocalData,
 } from "~/utils/storage";
 import type { FormData } from "~/components/molecules/CryptoForm";
-import { useSession } from "next-auth/react";
 import type { Session } from "next-auth";
 
 export const useCryptoData = ({ session }: { session: Session }) => {
@@ -21,7 +20,7 @@ export const useCryptoData = ({ session }: { session: Session }) => {
     const fetchData = async () => {
       setStatus("Loading...");
       try {
-        const loadedData = session.user.id
+        const loadedData = session?.user?.id
           ? await loadDataCloud("cryptoData")
           : await loadData("cryptoData");
         setData(loadedData);

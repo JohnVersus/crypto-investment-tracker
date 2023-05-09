@@ -45,7 +45,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
     useCryptoData({ session: userSession });
 
   useEffect(() => {
-    if (userSession.user.id) {
+    if (userSession?.user?.id) {
       migrateLocalData()
         .then()
         .catch((e) => {
