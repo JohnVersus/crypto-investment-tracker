@@ -44,6 +44,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ onClick, ...rest }) => {
       minWidth={["2rem", "2rem", "2rem", "2rem", "2rem", "4rem"]}
       maxWidth={["2rem", "2rem", "2rem", "2rem", "2rem", "4rem"]}
       padding={1}
+      aria-label={"Toggle Form"}
     >
       {isHidden ? (
         <Plus size={"100%"} color={"white"} />

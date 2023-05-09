@@ -21,6 +21,7 @@ const LoginButton = (session: { session: Session }) => {
         height={"100%"}
         color={theme.colors.white}
         borderRadius={"50%"}
+        aria-label="Logout"
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onClick={() => signOut()}
       >
@@ -43,10 +44,11 @@ const LoginButton = (session: { session: Session }) => {
       height={"100%"}
       color={theme.colors.white}
       borderRadius={"50%"}
+      aria-label="LogIn"
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onClick={() => signIn()}
     >
-      <Tooltip content={"Login"}>
+      <Tooltip content={"LogIn"}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {/* <img
           src="/google.svg"

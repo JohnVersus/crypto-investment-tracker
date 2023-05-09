@@ -107,7 +107,7 @@ const NavbarItem = forwardRef<HTMLAnchorElement, NavbarItemProps>(
         {children}
       </StyledNavbarItem>
     );
-
+    const lable = href && href === "/" ? "Home" : href?.replace("/", "");
     return href ? (
       <Link
         href={href}
@@ -115,6 +115,7 @@ const NavbarItem = forwardRef<HTMLAnchorElement, NavbarItemProps>(
         style={{
           borderRadius: "50%",
         }}
+        aria-label={lable}
       >
         {item}
       </Link>

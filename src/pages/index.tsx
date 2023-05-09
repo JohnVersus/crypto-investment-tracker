@@ -44,6 +44,18 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
   const { data, saveCryptoData, migrateLocalData, dataFetched, status, error } =
     useCryptoData({ session: userSession });
 
+  // const [coins, setCoins] = useState<CoinData[]>();
+  // const init = async () => {
+  //   const data = await typedFetch<CoinData[]>(`/api/getCoin`);
+  //   setCoins(data);
+  // };
+  // useEffect(() => {
+  //   init()
+  //     .then()
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
   useEffect(() => {
     if (userSession?.user?.id) {
       migrateLocalData()
@@ -85,49 +97,53 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
         integrity="sha384-7JpDzDHVT7ZzizD+7+r7ornyqmzNL8/9CJXzbi6vjC+cY5N5g5h5Q5/1M5AS5N5r"
         crossOrigin="anonymous"
       /> */}
-      <Box
-        as={"main"}
-        flexGrow={1}
-        display="flex"
-        justifyContent="flex-start"
-        alignItems="center"
-        alignContent={"center"}
-        paddingX="8vh"
-        paddingY="2vh"
-        flexDirection={"column"}
-        width={"auto"}
-      >
-        <Box>
-          <FlexBox
-            display="flex"
-            justifyContent="end"
-            alignItems="center"
-            width={"100%"}
-            paddingLeft={"5%"}
-          >
-            <ToggleButton
-              onClick={toggleFormVisibility}
-              buttonStyle="primary"
-              m={[1, 1, 1, 1, 1, 2]}
-              fontSize={[2, 2, 2, 2, 2, 6]}
+      {coins ? (
+        <Box
+          as={"main"}
+          flexGrow={1}
+          display="flex"
+          justifyContent="flex-start"
+          alignItems="center"
+          alignContent={"center"}
+          paddingX="8vh"
+          paddingY="2vh"
+          flexDirection={"column"}
+          width={"auto"}
+        >
+          <Box>
+            <FlexBox
+              display="flex"
+              justifyContent="end"
+              alignItems="center"
+              width={"100%"}
+              paddingLeft={"5%"}
+            >
+              <ToggleButton
+                onClick={toggleFormVisibility}
+                buttonStyle="primary"
+                m={[1, 1, 1, 1, 1, 2]}
+                fontSize={[2, 2, 2, 2, 2, 6]}
+              />
+            </FlexBox>
+            <CryptoForm
+              inputVariant={"primary"}
+              buttonVariant={"primary"}
+              formTrigger={saveCryptoData}
+              isHidden={formHidden}
+              coins={coins}
+              disabled={status === "Saving..." ? true : false}
             />
-          </FlexBox>
-          <CryptoForm
-            inputVariant={"primary"}
-            buttonVariant={"primary"}
-            formTrigger={saveCryptoData}
-            isHidden={formHidden}
+          </Box>
+          <SavedData
+            savedData={data}
             coins={coins}
-            disabled={status === "Saving..." ? true : false}
+            session={userSession}
+            status={status}
           />
         </Box>
-        <SavedData
-          savedData={data}
-          coins={coins}
-          session={userSession}
-          status={status}
-        />
-      </Box>
+      ) : (
+        "Loading..."
+      )}
     </CryptoInvestmentTrackerLayout>
   );
 };

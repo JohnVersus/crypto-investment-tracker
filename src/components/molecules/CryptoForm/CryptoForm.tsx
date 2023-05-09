@@ -151,7 +151,7 @@ const CryptoForm: React.FC<FormProps> = ({
           fontSize={[2, 2, 2, 2, 2, 6]}
           disabled={disabled}
         >
-          Submit
+          Save
         </Button>
       </FlexBox>
     </Form>
