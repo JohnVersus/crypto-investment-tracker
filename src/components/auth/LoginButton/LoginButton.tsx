@@ -1,5 +1,5 @@
 import type { Session } from "next-auth";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { LogIn, LogOut } from "react-feather";
 import { theme } from "~/components/Theme";
 import { Tooltip } from "~/components/atoms";
@@ -8,7 +8,7 @@ import { Button } from "~/components/atoms";
 const LoginButton = ({ session }: { session: Session }) => {
   // const { data: session } = useSession();
 
-  if (session.user.id) {
+  if (session?.user?.id) {
     return (
       <Button
         display="flex"
