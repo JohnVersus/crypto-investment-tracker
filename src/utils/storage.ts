@@ -167,7 +167,6 @@ export const loadDataCloud = async (
   key: string
 ): Promise<FormData[] | null> => {
   const response = await typedFetch<FormData[]>(`api/loadFormData?key=${key}`);
-  console.log("Fectching data");
   return response;
 };
 
