@@ -24,7 +24,12 @@ const Layout: React.FC<LayoutProps> = ({ session, children, ...rest }) => {
       <Navbar zIndex={75}>
         <NavbarItem href="/">
           <Tooltip content={"Home"}>
-            <Home size={"80%"} color={theme.colors.white} />
+            <Home
+              size={"80%"}
+              min-width="24"
+              min-height="24"
+              color={theme.colors.white}
+            />
           </Tooltip>
         </NavbarItem>
         <NavbarItem>
@@ -32,7 +37,12 @@ const Layout: React.FC<LayoutProps> = ({ session, children, ...rest }) => {
         </NavbarItem>
         <NavbarItem href="/info">
           <Tooltip content={"Info"}>
-            <Info size={"80%"} color={theme.colors.white} />
+            <Info
+              size={"80%"}
+              min-width="24"
+              min-height="24"
+              color={theme.colors.white}
+            />
           </Tooltip>
         </NavbarItem>
       </Navbar>

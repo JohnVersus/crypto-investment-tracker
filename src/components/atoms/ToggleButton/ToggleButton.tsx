@@ -45,11 +45,14 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ onClick, ...rest }) => {
       maxWidth={["2rem", "2rem", "2rem", "2rem", "2rem", "4rem"]}
       padding={1}
       aria-label={"Toggle Form"}
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       {isHidden ? (
-        <Plus size={"100%"} color={"white"} />
+        <Plus width={"100%"} color={"white"} min-width="24" min-height="24" />
       ) : (
-        <X size={"100%"} color={"white"} />
+        <X width={"100%"} color={"white"} min-width="24" min-height="24" />
       )}
     </StyledButton>
   );

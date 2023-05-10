@@ -11,7 +11,7 @@ import typedFetch from "~/utils/typedFetch";
 import { getServerAuthSession } from "~/server/auth";
 import type { Session } from "next-auth";
 import { SeoTags } from "~/components/atoms";
-
+import { Text } from "~/components/atoms";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getServerAuthSession(ctx);
   const apiUrl = process.env.NEXTAUTH_URL;
@@ -80,24 +80,18 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
     setFormHidden((prevHidden) => !prevHidden);
   };
 
-  return (
-    <CryptoInvestmentTrackerLayout session={userSession}>
-      <SeoTags
-        title="Crypto Investment Tracker | JohnVersus"
-        description="Crypto investment tracker is a simple tool to replace your classic excel sheet. It helps to track all your crypto investments in one place."
-        favicon="/coin.png"
-        thumbnailUrl="https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https%3A%2F%2Fgithub.com%2FJohnVersus%2Fcrypto-investment-tracker"
-        url="https://crypto-investment-tracker.vercel.app/"
-        siteName="Crypto Investment Tracker"
-        twitterUsername="_johnversus"
-      />
-      {/* <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.css"
-        integrity="sha384-7JpDzDHVT7ZzizD+7+r7ornyqmzNL8/9CJXzbi6vjC+cY5N5g5h5Q5/1M5AS5N5r"
-        crossOrigin="anonymous"
-      /> */}
-      {coins ? (
+  if (dataFetched) {
+    return (
+      <CryptoInvestmentTrackerLayout session={userSession}>
+        <SeoTags
+          title="Crypto Investment Tracker | JohnVersus"
+          description="Crypto investment tracker is a simple tool to replace your classic excel sheet. It helps to track all your crypto investments in one place."
+          favicon="/coin.png"
+          thumbnailUrl="https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https%3A%2F%2Fgithub.com%2FJohnVersus%2Fcrypto-investment-tracker"
+          url="https://crypto-investment-tracker.vercel.app/"
+          siteName="Crypto Investment Tracker"
+          twitterUsername="_johnversus"
+        />
         <Box
           as={"main"}
           flexGrow={1}
@@ -141,10 +135,27 @@ const IndexPage: NextPage<IndexPageProps> = ({ coins, userSession }) => {
             status={status}
           />
         </Box>
-      ) : (
-        "Loading..."
-      )}
-    </CryptoInvestmentTrackerLayout>
+      </CryptoInvestmentTrackerLayout>
+    );
+  }
+  return (
+    <FlexBox
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      flexDirection={"column"}
+    >
+      <Text as="h1" textAlign={"center"}>
+        CRYPTO INVESTMENT TRACKER
+      </Text>
+      <Text as="h3" textAlign={"center"}>
+        Crypto investment tracker is a simple tool to replace your classic excel
+        sheet. It helps to track all your crypto investments in one place.
+      </Text>
+      <Text as="a" textAlign={"center"}>
+        Loading...
+      </Text>
+    </FlexBox>
   );
 };
 

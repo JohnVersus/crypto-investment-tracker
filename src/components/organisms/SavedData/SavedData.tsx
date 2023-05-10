@@ -195,7 +195,11 @@ const SavedData: React.FC<SavedDataProps & userSession> = ({
         height={[40, 40, 40, 40, 40, 60]}
         onClick={() => setHideSensitiveInfo(!hideSensitiveInfo)}
       >
-        {hideSensitiveInfo ? <EyeOff size={"80%"} /> : <Eye size={"90%"} />}
+        {hideSensitiveInfo ? (
+          <EyeOff size={"80%"} min-width="24" min-height="24" />
+        ) : (
+          <Eye size={"90%"} min-width="24" min-height="24" />
+        )}
       </FloatingHideButton>
     </>
   );

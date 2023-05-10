@@ -4,8 +4,9 @@ import { LogIn, LogOut } from "react-feather";
 import { theme } from "~/components/Theme";
 import { Tooltip } from "~/components/atoms";
 import { Button } from "~/components/atoms";
+import { memo } from "react";
 
-const LoginButton = ({ session }: { session: Session }) => {
+const LoginButton = memo(({ session }: { session: Session }) => {
   // const { data: session } = useSession();
 
   if (session?.user?.id) {
@@ -26,7 +27,12 @@ const LoginButton = ({ session }: { session: Session }) => {
         onClick={() => signOut()}
       >
         <Tooltip content={"Logout"}>
-          <LogOut size={"80%"} cursor={"pointer"} />
+          <LogOut
+            size={"80%"}
+            cursor={"pointer"}
+            min-width="24"
+            min-height="24"
+          />
         </Tooltip>
       </Button>
     );
@@ -57,10 +63,11 @@ const LoginButton = ({ session }: { session: Session }) => {
           alt={"Google Auth"}
           loading="lazy"
         /> */}
-        <LogIn size={"80%"} cursor={"pointer"} />
+        <LogIn size={"80%"} cursor={"pointer"} min-width="24" min-height="24" />
       </Tooltip>
     </Button>
   );
-};
+});
 
+LoginButton.displayName = "LoginButton";
 export default LoginButton;
